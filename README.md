@@ -114,11 +114,10 @@ Open your terminal or command prompt and run:
 
 
 
-git clone [YOUR_REPOSITORY_URL_HERE]
-cd BloggingSystem
-(Replace [YOUR_REPOSITORY_URL_HERE] with the actual URL of your Git repository.)
+git clone https://github.com/DevClass2023/UBA-BLOGGING-API.git
+cd UBA-BLOGGING-API
 
-Restore NuGet packages:
+Restore NuGet packages -
 Navigate to the solution's root directory (BloggingSystem/ where BloggingSystem.sln is located) and run:
 
 
@@ -127,7 +126,7 @@ This project is pre-configured to use SQLite as its default database provider, m
 
 
 cd BloggingSystem.Infrastructure
-Apply Database Migrations: This will create the SQLite database file and apply your schema.
+Apply Database Migrations - This will create the SQLite database file and apply your schema.
 
 
 dotnet ef database update
@@ -141,10 +140,10 @@ Run the application
 
 dotnet run
 
-💭 Why Minimal Comments?
+Why Minimal Comments?
 You might notice that the project code contains minimal comments within the methods and classes themselves. This approach follows the principle of "Clean Code" and "Self-Documenting Code".
 
-Readability: We strive for well-structured code with meaningful variable names, method names, and clear class responsibilities so that the code is inherently understandable. The code itself becomes the primary source of truth for "what" it does.
+Readability -  We strive for well-structured code with meaningful variable names, method names, and clear class responsibilities so that the code is inherently understandable. The code itself becomes the primary source of truth for "what" it does.
 
-Maintainability: Comments can quickly become outdated as code evolves, leading to confusion and errors. By minimizing comments, we enforce a discipline of writing clearer code that doesn't need constant annotation.
+Maintainability -  Comments can quickly become outdated as code evolves, leading to confusion and errors. By minimizing comments, we enforce a discipline of writing clearer code that doesn't need constant annotation.
 
