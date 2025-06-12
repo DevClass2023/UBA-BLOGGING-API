@@ -1,6 +1,13 @@
+
+
 using System; 
+using System.Collections.Generic; 
+using System.Threading.Tasks; 
+
+using BloggingSystem.Domain.Entities; 
 
 namespace BloggingSystem.Domain.Interfaces;
+
 public interface IBlogRepository
 {
     Task<Blog> GetByIdAsync(Guid id);

@@ -2,7 +2,7 @@
 using System; 
 using MediatR; 
 using System.Collections.Generic; 
-using BloggingSystem.Application.DTOs; 
+using BloggingSystem.Application.DTOs.Post; 
 
 namespace BloggingSystem.Application.Queries.Post;
 

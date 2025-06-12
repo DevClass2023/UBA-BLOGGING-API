@@ -1,9 +1,13 @@
 using AutoMapper;
 using BloggingSystem.Application.DTOs.Post;
-using BloggingSystem.Application.Interfaces;
+using BloggingSystem.Domain.Interfaces;
 using BloggingSystem.Domain.Entities;
 using MediatR;
 using System;
+using System.Threading; 
+using System.Threading.Tasks; 
+
+using BloggingSystem.Application.Commands.Post; 
 
 namespace BloggingSystem.Application.Commands.Post;
 

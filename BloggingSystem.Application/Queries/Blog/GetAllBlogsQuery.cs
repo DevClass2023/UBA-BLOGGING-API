@@ -1,7 +1,6 @@
 using System.Collections.Generic; 
 using MediatR; 
-using BloggingSystem.Application.DTOs; 
-
+using BloggingSystem.Application.DTOs.Blog;
 namespace BloggingSystem.Application.Queries.Blog;
 
 // Query to retrieve all blogs

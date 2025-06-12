@@ -1,5 +1,5 @@
-using AutoMapper;
-using BloggingSystem.Application.DTOs; 
+using AutoMapper; 
+using BloggingSystem.Application.DTOs.Author;
 using BloggingSystem.Application.Exceptions; 
 using BloggingSystem.Domain.Interfaces; 
 using MediatR; 

@@ -1,5 +1,9 @@
 using FluentValidation;
 using BloggingSystem.Application.DTOs.Post;
+using System;
+using MediatR;
+using AutoMapper;
+
 
 namespace BloggingSystem.Application.Commands.Post;
 public class CreatePostValidator : AbstractValidator<CreatePostDto>

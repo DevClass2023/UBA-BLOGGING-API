@@ -3,10 +3,10 @@ using MediatR;
 using AutoMapper;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
-using BloggingSystem.Application.DTOs;
-using BloggingSystem.Application.Interfaces; 
+using System.Threading.Tasks; 
 using BloggingSystem.Application.Exceptions; 
+using BloggingSystem.Application.DTOs.Blog; 
+using BloggingSystem.Domain.Interfaces; 
 
 namespace BloggingSystem.Application.Queries.Blog
 {

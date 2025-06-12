@@ -1,6 +1,6 @@
 
 using MediatR;
-using BloggingSystem.Application.DTOs;
+using BloggingSystem.Application.DTOs.Blog;
 using System;
 using System.Collections.Generic;
 

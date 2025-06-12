@@ -1,6 +1,6 @@
 
 using AutoMapper; 
-using BloggingSystem.Application.DTOs; 
+using BloggingSystem.Application.DTOs.Blog;
 using BloggingSystem.Domain.Interfaces; 
 using MediatR; 
 using System.Collections.Generic;

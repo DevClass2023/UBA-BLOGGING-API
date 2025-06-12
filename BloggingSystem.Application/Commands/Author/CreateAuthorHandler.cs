@@ -1,16 +1,12 @@
-using AutoMapper;
-using BloggingSystem.Application.DTOs.Author; 
-using BloggingSystem.Domain.Entities;
-using BloggingSystem.Domain.Interfaces;
-using MediatR;
-using System; 
-using System.Threading; 
-using System.Threading.Tasks; 
+using AutoMapper; 
+using MediatR;   
+using BloggingSystem.Domain.Interfaces; 
+using BloggingSystem.Domain.Entities; 
+using BloggingSystem.Application.DTOs.Author;
 
 namespace BloggingSystem.Application.Commands.Author;
 
-// Handler for creating a new author
-public class CreateAuthorHandler : IRequestHandler<CreateAuthorCommand, Guid>
+public class CreateAuthorHandler : IRequestHandler<CreateAuthorCommand, Guid> 
 {
     private readonly IUnitOfWork _uow; // Unit of Work for data access
     private readonly IMapper _mapper;  // Mapper for DTO to entity

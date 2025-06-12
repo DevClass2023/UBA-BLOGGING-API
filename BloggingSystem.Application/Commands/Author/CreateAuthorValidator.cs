@@ -1,11 +1,14 @@
-using FluentValidation; 
-using BloggingSystem.Application.DTOs.Author; 
 
+using FluentValidation;
+using BloggingSystem.Application.DTOs.Author;
+using System;
+using MediatR;
+using AutoMapper;
 
-namespace BloggingSystem.Application.Commands.Author;
 
 // Validator for CreateAuthorCommand, specifically validating its inner CreateAuthorDto
-public class CreateAuthorValidator : AbstractValidator<CreateAuthorCommand> 
+public class CreateAuthorValidator : AbstractValidator<CreateAuthorCommand>
+{ 
     public CreateAuthorValidator()
     {
         // RuleFor the DTO property within the command

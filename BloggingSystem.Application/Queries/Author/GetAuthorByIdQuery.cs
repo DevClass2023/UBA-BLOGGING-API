@@ -1,7 +1,7 @@
 
 using System;
 using MediatR; 
-using BloggingSystem.Application.DTOs; 
+using BloggingSystem.Application.DTOs.Author;
 
 namespace BloggingSystem.Application.Queries.Author;
 

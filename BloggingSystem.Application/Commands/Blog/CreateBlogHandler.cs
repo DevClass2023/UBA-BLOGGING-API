@@ -5,6 +5,8 @@ using BloggingSystem.Domain.Interfaces;
 using MediatR;
 using System;
 
+namespace BloggingSystem.Application.Commands.Blog;
+
 // Handler for creating a new blog
 public class CreateBlogHandler : IRequestHandler<CreateBlogCommand, Guid>
 {

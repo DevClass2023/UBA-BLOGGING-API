@@ -1,0 +1,6 @@
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.csproj.AssemblyReference.cache
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.AssemblyInfoInputs.cache
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.AssemblyInfo.cs
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.csproj.CoreCompileInputs.cache
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.sourcelink.json
