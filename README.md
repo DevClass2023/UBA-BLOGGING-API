@@ -126,7 +126,7 @@ This project is pre-configured to use SQLite as its default database provider, m
 
 
 cd BloggingSystem.Infrastructure
-Apply Database Migrations - This will create the SQLite database file and apply your schema.
+Apply Database Migrations - This will create the SQLite database file and apply your schema for the project.
 
 
 dotnet ef database update
