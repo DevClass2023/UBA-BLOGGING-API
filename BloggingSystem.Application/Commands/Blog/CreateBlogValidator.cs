@@ -1,25 +1,20 @@
 using FluentValidation;
 using BloggingSystem.Application.DTOs;
-using System;
-using MediatR;
+using BloggingSystem.Application.Commands.Author; 
 
+namespace BloggingSystem.Application.Commands.Author;
 
-namespace BloggingSystem.Application.Commands.Blog;
-
-public class CreateBlogHandler : IRequestHandler<CreateBlogCommand, Guid>
+public class CreateAuthorValidator : AbstractValidator<CreateAuthorCommand>
 {
-    private readonly IUnitOfWork _uow;     // Data access abstraction
-    private readonly IMapper _mapper;      // Maps DTO to entity
-
-    public CreateBlogHandler(IUnitOfWork uow, IMapper mapper)
+    public CreateAuthorValidator()
     {
-        _uow = uow;
-        _mapper = mapper;
-    }
+        RuleFor(x => x.Dto).NotNull().WithMessage("Author data (DTO) is required.");
 
-    public async Task<Guid> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
-    {
-        RuleFor(b => b.Name).NotEmpty();
-        RuleFor(b => b.Url).NotEmpty().Must(url => Uri.TryCreate(url, UriKind.Absolute, out _));
+        RuleFor(x => x.Dto.Name)
+            .NotEmpty().WithMessage("Name is required.");
+
+        RuleFor(x => x.Dto.Email)
+            .NotEmpty().WithMessage("Email is required.")
+            .EmailAddress().WithMessage("A valid email address is required.");
     }
 }
