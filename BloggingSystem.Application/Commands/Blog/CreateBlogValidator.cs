@@ -1,20 +1,25 @@
+
 using FluentValidation;
-using BloggingSystem.Application.DTOs;
-using BloggingSystem.Application.Commands.Author; 
+using BloggingSystem.Application.DTOs; 
+using System; 
 
-namespace BloggingSystem.Application.Commands.Author;
+namespace BloggingSystem.Application.Commands.Blog; 
 
-public class CreateAuthorValidator : AbstractValidator<CreateAuthorCommand>
+public class CreateBlogValidator : AbstractValidator<CreateBlogDto> 
 {
-    public CreateAuthorValidator()
+    public CreateBlogValidator()
     {
-        RuleFor(x => x.Dto).NotNull().WithMessage("Author data (DTO) is required.");
+        // Rules for CreateBlogDto properties
+        RuleFor(b => b.Name)
+            .NotEmpty().WithMessage("Blog name is required.");
 
-        RuleFor(x => x.Dto.Name)
-            .NotEmpty().WithMessage("Name is required.");
+        RuleFor(b => b.Url)
+            .NotEmpty().WithMessage("Blog URL is required.")
+            .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _))
+            .WithMessage("A valid URL is required for the blog.");
 
-        RuleFor(x => x.Dto.Email)
-            .NotEmpty().WithMessage("Email is required.")
-            .EmailAddress().WithMessage("A valid email address is required.");
+        // Assuming AuthorId is required for blog creation
+        RuleFor(b => b.AuthorId)
+            .NotEmpty().WithMessage("Author ID is required for the blog.");
     }
 }

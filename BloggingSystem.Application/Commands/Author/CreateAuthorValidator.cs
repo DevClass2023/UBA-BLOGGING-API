@@ -1,10 +1,11 @@
+
 using FluentValidation;
-using BloggingSystem.Application.DTOs;
+using BloggingSystem.Application.DTOs; 
 using BloggingSystem.Application.Commands.Author; 
 
-namespace BloggingSystem.Application.Commands.Author;
+namespace BloggingSystem.Application.Commands.Author; 
 
-public class CreateAuthorValidator : AbstractValidator<CreateAuthorCommand>
+public class CreateAuthorValidator : AbstractValidator<CreateAuthorCommand> 
 {
     public CreateAuthorValidator()
     {
