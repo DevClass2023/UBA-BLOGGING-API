@@ -1,8 +1,11 @@
-
 using BloggingSystem.Application.Commands.Blog;
-using BloggingSystem.Application.Queries.Blog;
+using BloggingSystem.Application.DTOs;
+using BloggingSystem.Application.Queries.Blog; 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BloggingSystem.API.Controllers;
 
@@ -17,29 +20,42 @@ public class BlogsController : ControllerBase
         _mediator = mediator;
     }
 
-    // Creates a new blog.
-    [HttpPost]
-    public async Task<IActionResult> CreateBlog([FromBody] CreateBlogCommand command)
+    [HttpGet] // Endpoint: GET /api/blogs (List all blogs)
+    public async Task<ActionResult<IEnumerable<BlogDto>>> GetAllBlogs()
     {
-        var result = await _mediator.Send(command);
-     
-        return CreatedAtAction(nameof(GetAllBlogs), new { id = result.Id }, result);
+        var query = new GetAllBlogsQuery();
+        var blogs = await _mediator.Send(query);
+        return Ok(blogs);
     }
 
-    // Retrieves all blogs.
-    [HttpGet]
-    public async Task<IActionResult> GetAllBlogs()
+    [HttpGet("{id}")] // Endpoint: GET /api/blogs/{id} (Get a blog by ID)
+    public async Task<ActionResult<BlogDto>> GetBlogById(Guid id)
     {
-        var result = await _mediator.Send(new GetAllBlogsQuery());
-        return Ok(result);
+        // FIX: Correctly instantiate GetBlogByIdQuery
+        var query = new GetBlogByIdQuery { Id = id };
+        var blog = await _mediator.Send(query);
+        if (blog == null)
+        {
+            return NotFound();
+        }
+        return Ok(blog);
     }
 
-    // Retrieves all blogs associated with a specific author.
-    [HttpGet("by-author/{authorId}")]
-    public async Task<IActionResult> GetBlogsByAuthor(Guid authorId)
+    [HttpPost] // Endpoint: POST /api/blogs (Create a new blog)
+    public async Task<ActionResult<BlogDto>> CreateBlog([FromBody] CreateBlogDto dto)
     {
-        var query = new GetBlogsByAuthorQuery(authorId);
-        var result = await _mediator.Send(query);
-        return Ok(result);
+        var command = new CreateBlogCommand { Dto = dto };
+        var resultId = await _mediator.Send(command); // Get the ID back from the command
+        // Retrieve the created blog to return the full DTO
+        var createdBlog = await _mediator.Send(new GetBlogByIdQuery { Id = resultId });
+        return CreatedAtAction(nameof(GetBlogById), new { id = resultId }, createdBlog);
+    }
+
+    [HttpGet("byAuthor/{authorId}")] // Endpoint: GET /api/blogs/byAuthor/{authorId} (Get blogs belonging to an author)
+    public async Task<ActionResult<IEnumerable<BlogDto>>> GetBlogsByAuthor(Guid authorId)
+    {
+        var query = new GetBlogsByAuthorQuery { AuthorId = authorId };
+        var blogs = await _mediator.Send(query);
+        return Ok(blogs);
     }
 }

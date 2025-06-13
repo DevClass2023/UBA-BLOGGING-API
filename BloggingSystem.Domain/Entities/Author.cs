@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 
 namespace BloggingSystem.Domain.Entities;
-
 
 // Represents the Author of blogs
 public class Author : BaseEntity
@@ -12,5 +12,3 @@ public class Author : BaseEntity
     // Navigation property to one author has many blogs
     public ICollection<Blog> Blogs { get; set; } = new List<Blog>();
 }
-
-

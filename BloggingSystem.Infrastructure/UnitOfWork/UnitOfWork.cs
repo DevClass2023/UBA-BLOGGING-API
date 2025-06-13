@@ -1,32 +1,38 @@
 using BloggingSystem.Domain.Interfaces;
 using BloggingSystem.Infrastructure.Persistence;
 using BloggingSystem.Infrastructure.Repositories;
+using System;
+using System.Threading.Tasks;
 
 namespace BloggingSystem.Infrastructure.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly BloggingDbContext _context;
+    private readonly BloggingDbContext _dbContext;
 
-    public IAuthorRepository Authors { get; private set; }  // Author repository
-    public IBlogRepository Blogs { get; private set; }      // Blog repository
-    public IPostRepository Posts { get; private set; }      // Post repository
+   
+    private IAuthorRepository? _authorRepository;
+    private IBlogRepository? _blogRepository;
+    private IPostRepository? _postRepository;
 
-    public UnitOfWork(BloggingDbContext context)
+    public UnitOfWork(BloggingDbContext dbContext)
     {
-        _context = context;
-        Authors = new AuthorRepository(_context);  // Initialize Author repo
-        Blogs = new BlogRepository(_context);      // Initialize Blog repo
-        Posts = new PostRepository(_context);      // Initialize Post repo
+        _dbContext = dbContext;
     }
+
+    // Lazy initialization of repositories
+    public IAuthorRepository Authors => _authorRepository ??= new AuthorRepository(_dbContext);
+    public IBlogRepository Blogs => _blogRepository ??= new BlogRepository(_dbContext);
+    public IPostRepository Posts => _postRepository ??= new PostRepository(_dbContext);
 
     public async Task<int> SaveChangesAsync()
     {
-        return await _context.SaveChangesAsync();  // Commit changes
+        return await _dbContext.SaveChangesAsync();
     }
 
     public void Dispose()
     {
-        _context.Dispose();  // Dispose context
+        _dbContext.Dispose();
+        GC.SuppressFinalize(this); 
     }
 }

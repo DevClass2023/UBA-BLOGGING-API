@@ -1,13 +1,11 @@
-
 using MediatR;
-using BloggingSystem.Application.DTOs.Blog;
+using BloggingSystem.Application.DTOs;
 using System;
 using System.Collections.Generic;
 
-namespace BloggingSystem.Application.Queries.Blog
+namespace BloggingSystem.Application.Queries.Blog;
+
+public class GetBlogsByAuthorQuery : IRequest<List<BlogDto>>
 {
-    public class GetBlogsByAuthorQuery : IRequest<List<BlogDto>>
-    {
-        public Guid AuthorId { get; set; }
-    }
+    public Guid AuthorId { get; set; } 
 }

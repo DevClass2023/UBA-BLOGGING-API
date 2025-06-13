@@ -1,17 +1,15 @@
 using AutoMapper;
-using BloggingSystem.Application.DTOs.Blog;
-using BloggingSystem.Domain.Entities;
-using BloggingSystem.Domain.Interfaces;
 using MediatR;
-using System;
+using BloggingSystem.Domain.Interfaces;
+using BloggingSystem.Application.DTOs;
+using BloggingSystem.Domain.Entities; 
 
 namespace BloggingSystem.Application.Commands.Blog;
 
-// Handler for creating a new blog
 public class CreateBlogHandler : IRequestHandler<CreateBlogCommand, Guid>
 {
-    private readonly IUnitOfWork _uow; // Unit of Work for data access
-    private readonly IMapper _mapper;  // AutoMapper for mapping DTO to entity
+    private readonly IUnitOfWork _uow;
+    private readonly IMapper _mapper;
 
     public CreateBlogHandler(IUnitOfWork uow, IMapper mapper)
     {
@@ -21,9 +19,11 @@ public class CreateBlogHandler : IRequestHandler<CreateBlogCommand, Guid>
 
     public async Task<Guid> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
     {
-        var entity = _mapper.Map<Blog>(request.Dto);     // Map DTO to Blog entity
-        await _uow.Blogs.AddAsync(entity);                // Add blog to database
-        await _uow.SaveChangesAsync();                    // Save changes
-        return entity.Id;                                 // Return the new blog ID
+      
+        var entity = _mapper.Map<BloggingSystem.Domain.Entities.Blog>(request.Dto);
+
+        await _uow.Blogs.AddAsync(entity);
+        await _uow.SaveChangesAsync();
+        return entity.Id;
     }
 }

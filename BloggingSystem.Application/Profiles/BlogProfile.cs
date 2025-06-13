@@ -12,7 +12,8 @@ public class BlogProfile : Profile
         CreateMap<Blog, BlogDto>();
 
         // Define mapping from CreateBlogDto to Blog entity
-        // Used when receiving data from the API to create a new Blog entity for persistence.
         CreateMap<CreateBlogDto, Blog>();
     }
 }
+
+

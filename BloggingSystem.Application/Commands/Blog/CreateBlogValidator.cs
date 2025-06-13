@@ -1,8 +1,9 @@
 using FluentValidation;
-using BloggingSystem.Application.DTOs.Blog;
-using System;
-using MediatR;
-using AutoMapper;
+using BloggingSystem.Application.DTOs;
+using System; 
+
+namespace BloggingSystem.Application.Commands.Blog;
+
 public class CreateBlogValidator : AbstractValidator<CreateBlogDto>
 {
     public CreateBlogValidator()

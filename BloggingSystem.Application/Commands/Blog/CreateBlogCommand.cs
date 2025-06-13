@@ -1,11 +1,11 @@
-
-using BloggingSystem.Application.DTOs;
+using System;
 using MediatR;
+using BloggingSystem.Application.DTOs;
 
 namespace BloggingSystem.Application.Commands.Blog;
-// Command to create a new blog
-public class CreateBlogCommand : IRequest<Guid> 
-{
-    public CreateBlogDto Dto { get; set; } // Data needed to create the blog
-}
 
+// Command to create a new blog
+public class CreateBlogCommand : IRequest<Guid>
+{
+    public required CreateBlogDto Dto { get; set; }
+}

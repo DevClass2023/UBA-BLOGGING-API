@@ -1,10 +1,11 @@
-
-using System;
-using System.Threading.Tasks;
 using BloggingSystem.Application.Commands.Post;
-using BloggingSystem.Application.Queries.Post;
+using BloggingSystem.Application.DTOs;
+using BloggingSystem.Application.Queries.Post; // Now includes GetPostByIdQuery
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BloggingSystem.API.Controllers;
 
@@ -18,21 +19,35 @@ public class PostsController : ControllerBase
     {
         _mediator = mediator;
     }
-    // Creates a new post and associates it with a blog.
-    [HttpPost]
-    public async Task<IActionResult> CreatePost([FromBody] CreatePostCommand command)
+
+    [HttpGet("{id}")] // Endpoint: GET /api/posts/{id} (Get a post by ID)
+    public async Task<ActionResult<PostDto>> GetPostById(Guid id)
     {
-        var result = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetPostsByBlog), new { blogId = result.BlogId }, result);
+      
+        var query = new GetPostByIdQuery { Id = id };
+        var post = await _mediator.Send(query);
+        if (post == null)
+        {
+            return NotFound();
+        }
+        return Ok(post);
     }
 
-    
-    // Retrieves all posts belonging to a specific blog.
-    [HttpGet("by-blog/{blogId}")]
-    public async Task<IActionResult> GetPostsByBlog(Guid blogId)
+    [HttpPost] 
+    public async Task<ActionResult<PostDto>> CreatePost([FromBody] CreatePostDto dto)
     {
-        var query = new GetPostsByBlogQuery(blogId);
-        var result = await _mediator.Send(query);
-        return Ok(result);
+        var command = new CreatePostCommand { Dto = dto };
+        var resultId = await _mediator.Send(command); // Get the ID back from the command
+        // Retrieve the created post to return the full DTO
+        var createdPost = await _mediator.Send(new GetPostByIdQuery { Id = resultId });
+        return CreatedAtAction(nameof(GetPostById), new { id = resultId }, createdPost);
+    }
+
+    [HttpGet("byBlog/{blogId}")] 
+    public async Task<ActionResult<IEnumerable<PostDto>>> GetPostsByBlog(Guid blogId)
+    {
+        var query = new GetPostsByBlogQuery { BlogId = blogId };
+        var posts = await _mediator.Send(query);
+        return Ok(posts);
     }
 }

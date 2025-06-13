@@ -4,9 +4,9 @@ namespace BloggingSystem.Application.DTOs;
 
 public class PostDto
 {
-    public Guid Id { get; set; }                // Post identifier
-    public string Title { get; set; }           // Post title
-    public string Content { get; set; }         // Post content/body
-    public DateTime DatePublished { get; set; } // Date when the post was published
-    public Guid BlogId { get; set; }             // ID of the blog this post belongs to
+    public Guid Id { get; set; }
+    public required string Title { get; set; }
+    public required string Content { get; set; }
+    public DateTime DatePublished { get; set; }
+    public Guid BlogId { get; set; }
 }

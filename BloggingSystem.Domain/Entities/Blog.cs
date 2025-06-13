@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BloggingSystem.Domain.Entities;
 
@@ -8,14 +9,10 @@ public class Blog : BaseEntity
     public string Name { get; set; } = string.Empty;
     public string Url { get; set; } = string.Empty;
 
-   // Foreign key to Author
+    // Foreign key to Author
     public Guid AuthorId { get; set; }
     public Author Author { get; set; } = null!;
 
     // Navigation property for related Posts
     public ICollection<Post> Posts { get; set; } = new List<Post>();
 }
-
-
-
-

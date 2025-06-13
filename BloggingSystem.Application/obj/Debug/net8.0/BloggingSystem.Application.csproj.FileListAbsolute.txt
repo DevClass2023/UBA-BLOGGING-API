@@ -1,6 +1,16 @@
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/bin/Debug/net8.0/BloggingSystem.Application.deps.json
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/bin/Debug/net8.0/BloggingSystem.Application.dll
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/bin/Debug/net8.0/BloggingSystem.Application.pdb
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/bin/Debug/net8.0/BloggingSystem.Domain.dll
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/bin/Debug/net8.0/BloggingSystem.Domain.pdb
 /home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.csproj.AssemblyReference.cache
 /home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
 /home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.AssemblyInfoInputs.cache
 /home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.AssemblyInfo.cs
 /home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.csproj.CoreCompileInputs.cache
 /home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.sourcelink.json
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/Blogging.69E0719E.Up2Date
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.dll
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/refint/BloggingSystem.Application.dll
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/BloggingSystem.Application.pdb
+/home/dev/UBA-BLOGGING-API/BloggingSystem.Application/obj/Debug/net8.0/ref/BloggingSystem.Application.dll

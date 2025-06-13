@@ -2,10 +2,13 @@ using BloggingSystem.Domain.Entities;
 using BloggingSystem.Domain.Interfaces;
 using BloggingSystem.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BloggingSystem.Infrastructure.Repositories;
 
-// Handles data operations for the Post entity.
 public class PostRepository : IPostRepository
 {
     private readonly BloggingDbContext _context;
@@ -15,20 +18,17 @@ public class PostRepository : IPostRepository
         _context = context;
     }
 
-    // Adds a new post to the database context.
     public async Task AddAsync(Post post)
     {
         await _context.Posts.AddAsync(post);
     }
 
-    // Retrieves a post by its unique ID.
     public async Task<Post?> GetByIdAsync(Guid id)
     {
         return await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    // Retrieves all posts associated with a specific blog.
-    public async Task<IEnumerable<Post>> GetPostsByBlogAsync(Guid blogId)
+    public async Task<IEnumerable<Post>> GetByBlogIdAsync(Guid blogId)
     {
         return await _context.Posts
             .Where(p => p.BlogId == blogId)

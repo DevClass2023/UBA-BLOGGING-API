@@ -4,6 +4,6 @@ namespace BloggingSystem.Application.DTOs;
 
 public class CreateAuthorDto
 {
-    public string Name { get; set; }   // Author's name
-    public string Email { get; set; }  // Author's email
+    public required string Name { get; set; }
+    public required string Email { get; set; }
 }

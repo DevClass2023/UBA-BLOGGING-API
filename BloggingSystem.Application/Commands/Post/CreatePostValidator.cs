@@ -1,19 +1,16 @@
 using FluentValidation;
-using BloggingSystem.Application.DTOs.Post;
-using System;
-using MediatR;
-using AutoMapper;
-
+using BloggingSystem.Application.DTOs;
 
 namespace BloggingSystem.Application.Commands.Post;
+
 public class CreatePostValidator : AbstractValidator<CreatePostDto>
 {
     public CreatePostValidator()
     {
         RuleFor(p => p.Title)
-            .NotEmpty().WithMessage("Post title is required.");    // Custom message for Title
+            .NotEmpty().WithMessage("Post title is required.");
 
         RuleFor(p => p.Content)
-            .NotEmpty().WithMessage("Post content is required.");  // Custom message for Content
+            .NotEmpty().WithMessage("Post content is required.");
     }
 }
